@@ -8,6 +8,7 @@ import requests
 PEXELS_API_KEY = "iUcGhDwSYhLEgvb6LpN4HJ3D3PCVCnj1VXD9iLllWGPU3ugnbOvM3r9s"
 
 
+
 def fetch_word_data(word="hello"):
     url = f"https://api.dictionaryapi.dev/api/v2/entries/en/{word}"
     response = requests.get(url)
@@ -86,6 +87,7 @@ def create_video(word, definition, example):
 
     final = CompositeVideoClip([background, txt_clip]).with_audio(audio)
     final.write_videofile("output/video.mp4", codec="libx264", audio_codec="aac")
+
 
 
 if __name__ == "__main__":
