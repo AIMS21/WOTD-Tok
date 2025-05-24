@@ -43,10 +43,6 @@ def generate_audio(text, filename="output/audio.mp3"):
 def create_video(word, definition, example):
     audio = AudioFileClip("output/audio.mp3")
     background = VideoFileClip("assets/background.mp4").subclipped(0, audio.duration)
-    
-
-    # audio_duration = audio.duration
-    # print(f"Audio duration: {audio_duration}")
 
     text = f"Word: {word}\n\nDefinition:\n{definition}\n\nExample:\n{example}"
     txt_clip = TextClip(text= text, font_size=40, color='white', size=background.size, method='caption')
