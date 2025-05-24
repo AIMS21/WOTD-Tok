@@ -6,10 +6,10 @@
 *.mp3
 
 # Ignore generated video and audio output
-/output/
+output/
 
 # Ignore generated video and audio assets
-/assets/
+assets/
 
 # Ignore Python virtual environment
 venv/
