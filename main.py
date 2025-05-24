@@ -1,5 +1,7 @@
 # main.py
 import requests
+from gtts import gTTS
+
 
 def fetch_word_data(word="hello"):
     url = f"https://api.dictionaryapi.dev/api/v2/entries/en/{word}"
@@ -33,7 +35,22 @@ def fetch_word_data(word="hello"):
     else:
         raise Exception("Word not found.")
 
+def generate_audio(text, filename="output/audio.mp3"):
+    tts = gTTS(text)
+    tts.save(filename)
+
+
+
+
+
 # Test
 word, definition, example = fetch_word_data()
 print(word, definition, example)
+
+tts_phrase = "The Word of the day is " + word + ". Here is the Definition: " + definition
+if example:
+    tts_phrase += "An example of how to use this word: " + example
+
+
+generate_audio(tts_phrase)
 
