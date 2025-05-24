@@ -1,0 +1,20 @@
+# Created by venv; see https://docs.python.org/3/library/venv.html
+# Ignore all MP4 videos
+*.mp4
+
+# Ignore audio files
+*.mp3
+
+# Ignore generated video and audio output
+/output/
+
+# Ignore generated video and audio assets
+/assets/
+
+# Ignore Python virtual environment
+venv/
+__pycache__/
+*.pyc
+
+# Mac system files
+.DS_Store
