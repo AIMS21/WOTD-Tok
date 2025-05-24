@@ -9,7 +9,7 @@ PEXELS_API_KEY = "iUcGhDwSYhLEgvb6LpN4HJ3D3PCVCnj1VXD9iLllWGPU3ugnbOvM3r9s"
 
 
 
-def fetch_word_data(word="hello"):
+def fetch_word_data(word="goodbye"):
     url = f"https://api.dictionaryapi.dev/api/v2/entries/en/{word}"
     response = requests.get(url)
     data = response.json()
