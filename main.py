@@ -2,11 +2,14 @@
 
 from gtts import gTTS
 from moviepy import *
+from dotenv import load_dotenv
+import os
 import random
 import requests
 
-PEXELS_API_KEY = "iUcGhDwSYhLEgvb6LpN4HJ3D3PCVCnj1VXD9iLllWGPU3ugnbOvM3r9s"
-MERRIAM_API_KEY = "166db0c5-7b1b-4542-ad61-57262b7e3660"
+load_dotenv()
+pexels_api_key = os.getenv("PEXELS_API_KEY")
+merriam_api_key = os.getenv("MERRIAM_API_KEY")
 
 def fetch_random_word():
     random_word_response = requests.get("https://random-word-api.herokuapp.com/word")
@@ -17,7 +20,8 @@ def fetch_random_word():
 
 def fetch_word_data(word):
     try:
-        url = f"https://dictionaryapi.com/api/v3/references/learners/json/{word}?key={MERRIAM_API_KEY}"
+        print(merriam_api_key)
+        url = f"https://dictionaryapi.com/api/v3/references/learners/json/{word}?key={merriam_api_key}"
         response = requests.get(url)
         data = response.json()
         definitions = []
@@ -36,9 +40,7 @@ def generate_audio(text, filename="output/audio.mp3"):
     tts.save(filename)
 
 def generate_background(duration):
-    headers = {"Authorization": PEXELS_API_KEY}
-    #Grabs videos related to the word
-    # "https://api.pexels.com/videos/search?query=nature&per_page=10"
+    headers = {"Authorization": pexels_api_key}
     pexels_url = f"https://api.pexels.com/videos/search?query={word}&orientation=portrait&size=large&per_page=10"
     res = requests.get(pexels_url, headers=headers)
     videos = res.json()['videos']
